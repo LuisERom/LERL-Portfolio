@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 interface Node {
@@ -54,7 +54,7 @@ const BrainActivity = () => {
     // Left hemisphere nodes (frontal, parietal, temporal, occipital)
     // Right hemisphere nodes (frontal, parietal, temporal, occipital)
     // Central nodes (corpus callosum connections)
-    const nodes: Node[] = [
+    const nodes: Node[] = useMemo(() => [
         // Left frontal lobe (top-left)
         { id: 0, x: 175, y: 55, connections: [1, 2, 10, 11] },
         { id: 1, x: 150, y: 65, connections: [0, 2, 3, 11] },
@@ -107,23 +107,26 @@ const BrainActivity = () => {
         { id: 30, x: 265, y: 220, connections: [23, 24, 31, 32] },
         { id: 31, x: 223, y: 225, connections: [24, 26, 30, 32] },
         { id: 32, x: 240, y: 245, connections: [25, 26, 34] },
-    ];
+    ], []);
 
     // Generate connections from nodes (only valid connections where both nodes exist)
-    const connections: Connection[] = [];
-    const nodeIds = new Set(nodes.map(n => n.id));
+    const connections: Connection[] = useMemo(() => {
+        const conns: Connection[] = [];
+        const nodeIds = new Set(nodes.map(n => n.id));
 
-    nodes.forEach(node => {
-        node.connections.forEach(targetId => {
-            // Only create connection if target node exists
-            if (nodeIds.has(targetId)) {
-                const connectionId = `${Math.min(node.id, targetId)}-${Math.max(node.id, targetId)}`;
-                if (!connections.find(c => `${Math.min(c.from, c.to)}-${Math.max(c.from, c.to)}` === connectionId)) {
-                    connections.push({ from: node.id, to: targetId });
+        nodes.forEach(node => {
+            node.connections.forEach(targetId => {
+                // Only create connection if target node exists
+                if (nodeIds.has(targetId)) {
+                    const connectionId = `${Math.min(node.id, targetId)}-${Math.max(node.id, targetId)}`;
+                    if (!conns.find(c => `${Math.min(c.from, c.to)}-${Math.max(c.from, c.to)}` === connectionId)) {
+                        conns.push({ from: node.id, to: targetId });
+                    }
                 }
-            }
+            });
         });
-    });
+        return conns;
+    }, [nodes]);
 
     const activateNode = useCallback((nodeId: number) => {
         // Clear any existing states to prevent stuck animations

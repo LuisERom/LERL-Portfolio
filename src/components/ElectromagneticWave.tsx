@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
 interface Wave {
     id: number;
@@ -22,6 +21,7 @@ interface Obstacle {
 }
 
 const ElectromagneticWave = () => {
+    // DISABLED: Click effect is deactivated
     const [waves, setWaves] = useState<Wave[]>([]);
     const [obstacles, setObstacles] = useState<Obstacle[]>([]);
     const waveIdRef = useRef(0);
@@ -29,6 +29,11 @@ const ElectromagneticWave = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const animationFrameRef = useRef<number | undefined>(undefined);
     const processedCollisionsRef = useRef<Set<string>>(new Set());
+
+    // Clear any existing waves when component mounts (in case it was previously enabled)
+    useEffect(() => {
+        setWaves([]);
+    }, []);
 
     // Keep wavesRef in sync with waves state
     useEffect(() => {
@@ -91,65 +96,58 @@ const ElectromagneticWave = () => {
                 return;
             }
 
-            // Don't trigger when clicking inside project cards (the timeline cards)
-            // Project cards have cursor-pointer and group classes and are inside timeline (border-l-2)
-            let checkElement: HTMLElement | null = target;
-            let isInsideCard = false;
-            let clickedCard: HTMLElement | null = null;
+            const clickX = e.clientX;
+            const clickY = e.clientY;
 
-            while (checkElement && checkElement !== document.body) {
-                if (checkElement.classList.contains('cursor-pointer') &&
-                    checkElement.classList.contains('group')) {
-                    // Verify it's inside the timeline structure
-                    if (checkElement.closest('[class*="border-l-2"]')) {
-                        isInsideCard = true;
-                        clickedCard = checkElement;
-                        return;
-                    }
+            // Use elementFromPoint to find the element at the click location
+            // Note: canvas has pointer-events-none so it won't interfere
+            const elementAtPoint = document.elementFromPoint(clickX, clickY) as HTMLElement;
+
+            // Check if the clicked element or any parent has the data-project-card attribute
+            // Also check for the project-card-wrapper class as a backup
+            if (elementAtPoint) {
+                if (elementAtPoint.closest('[data-project-card="true"]') ||
+                    elementAtPoint.closest('.project-card-wrapper') ||
+                    elementAtPoint.closest('.cursor-pointer.group')) {
+                    return;
                 }
-                checkElement = checkElement.parentElement;
             }
 
-            // If clicking outside a card, check if exiting from top/bottom (block) or sides (allow)
-            if (!isInsideCard) {
-                const clickX = e.clientX;
-                const clickY = e.clientY;
+            // Also check all project cards by bounding box as a fallback
+            const allCards = document.querySelectorAll('[data-project-card="true"]') as NodeListOf<HTMLElement>;
+
+            for (const card of allCards) {
+                const rect = card.getBoundingClientRect();
+
+                // Check if click is inside the card bounds (with some padding for elements that stick out)
+                const isInsideCard =
+                    clickX >= rect.left - 20 &&
+                    clickX <= rect.right + 20 &&
+                    clickY >= rect.top - 100 && // Extra padding for logo that sticks out
+                    clickY <= rect.bottom + 20;
+
+                if (isInsideCard) {
+                    // Click is inside a project card - don't create wave
+                    return;
+                }
+
+                // If clicking outside a card, check if exiting from top/bottom (block) or sides (allow)
                 const margin = 50; // Margin to detect "near" the card
+                const isOutsideCard =
+                    clickX < rect.left ||
+                    clickX > rect.right ||
+                    clickY < rect.top ||
+                    clickY > rect.bottom;
 
-                // Find all project cards (elements with both cursor-pointer and group classes in timeline)
-                const allElements = document.querySelectorAll('[class*="cursor-pointer"]');
-                const allCards: HTMLElement[] = [];
+                if (isOutsideCard) {
+                    // Check if click is within horizontal bounds (left to right) but outside vertical bounds
+                    // This means it's exiting from top or bottom
+                    const withinHorizontalBounds = clickX >= rect.left - margin && clickX <= rect.right + margin;
+                    const outsideVerticalBounds = clickY < rect.top || clickY > rect.bottom;
 
-                allElements.forEach((el) => {
-                    const element = el as HTMLElement;
-                    if (element.classList.contains('cursor-pointer') &&
-                        element.classList.contains('group') &&
-                        element.closest('[class*="border-l-2"]')) {
-                        allCards.push(element);
-                    }
-                });
-
-                for (const card of allCards) {
-
-                    const rect = card.getBoundingClientRect();
-
-                    // Check if click is outside the card
-                    const isOutsideCard =
-                        clickX < rect.left ||
-                        clickX > rect.right ||
-                        clickY < rect.top ||
-                        clickY > rect.bottom;
-
-                    if (isOutsideCard) {
-                        // Check if click is within horizontal bounds (left to right) but outside vertical bounds
-                        // This means it's exiting from top or bottom
-                        const withinHorizontalBounds = clickX >= rect.left - margin && clickX <= rect.right + margin;
-                        const outsideVerticalBounds = clickY < rect.top || clickY > rect.bottom;
-
-                        if (withinHorizontalBounds && outsideVerticalBounds) {
-                            // Clicking out from top or bottom - block wave
-                            return;
-                        }
+                    if (withinHorizontalBounds && outsideVerticalBounds) {
+                        // Clicking out from top or bottom - block wave
+                        return;
                     }
                 }
             }
@@ -197,14 +195,19 @@ const ElectromagneticWave = () => {
             }, 1500);
         };
 
-        window.addEventListener('click', handleClick);
+        // Use capture phase to check before React handlers fire
+        // DISABLED: Click effect is deactivated
+        // window.addEventListener('click', handleClick, true);
 
         return () => {
-            window.removeEventListener('click', handleClick);
+            // window.removeEventListener('click', handleClick, true);
         };
     }, []);
 
     // Draw waves with physics-based collision
+    // DISABLED: Click effect is deactivated - don't render waves
+    // The entire drawing effect is commented out below
+    /*
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -394,13 +397,17 @@ const ElectromagneticWave = () => {
             }
         };
     }, [waves, obstacles]);
+    */
 
-    return (
-        <canvas
-            ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-[9999]"
-        />
-    );
+    // DISABLED: Click effect is deactivated - return null to hide canvas
+    // return (
+    //     <canvas
+    //         ref={canvasRef}
+    //         className="fixed inset-0 pointer-events-none z-[9999]"
+    //     />
+    // );
+
+    return null;
 };
 
 export default ElectromagneticWave;
