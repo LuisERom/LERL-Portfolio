@@ -33,9 +33,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body className="min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white font-sans">
+      <body className="min-h-screen bg-zinc-100 text-black dark:bg-zinc-900 dark:text-white font-sans">
         <ThemeInit />
-        <header className="p-4 border-b border-zinc-200 dark:border-zinc-700">
+        <header className="p-4 border-b border-zinc-200 dark:border-zinc-700 relative z-10">
           <nav className="flex justify-between max-w-5xl mx-auto">
             <h1 className="text-xl font-semibold">Luis E. Román Lizasoain</h1>
             <ul className="flex gap-4 text-sm items-center">
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </ul>
           </nav>
         </header>
-        <main className="max-w-5xl mx-auto p-6">{children}</main>
+        <main className="max-w-5xl mx-auto p-6 relative z-10">{children}</main>
       </body>
     </html>
   );

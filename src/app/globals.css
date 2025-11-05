@@ -5,3 +5,25 @@
 .zoom-overlay {
   background-color: rgba(0, 0, 0, 0.85) !important;
 }
+
+/* Portrait orientation: when height > width */
+@media (max-aspect-ratio: 1/1) {
+  .portrait-center {
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+  }
+
+  .portrait-hide {
+    display: none !important;
+  }
+
+  .portrait-text-left {
+    text-align: left !important;
+  }
+
+  .portrait-justify-start {
+    justify-content: flex-start !important;
+  }
+}
