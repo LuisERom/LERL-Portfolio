@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 interface Node {
@@ -47,7 +47,7 @@ const BrainActivity = () => {
     // Right hemisphere (mirrored, more detailed)
     //const rightHemisphere = "M 290 50 Q 300 45 310 50 Q 320 55 325 65 Q 330 75 332 88 Q 334 100 330 115 Q 326 130 322 145 Q 318 160 312 175 Q 306 190 298 200 Q 290 210 280 218 Q 270 223 260 222 Q 250 221 242 216 Q 234 211 228 203 Q 222 195 218 185 Q 214 175 213 165 Q 212 155 214 145 Q 216 135 220 127 Q 224 119 230 113 Q 236 107 243 102 Q 250 97 258 94 Q 266 91 275 88 Q 284 85 290 80 Q 296 75 300 68 Q 304 61 290 50 Z";
     // Brain stem and cerebellum
-    const brainStem = "M 185 218 Q 190 230 195 245 Q 195 255 192 265 Q 189 272 195 275 Q 201 272 198 265 Q 201 255 201 245 Q 206 230 211 218 Q 208 220 185 218 Z";
+    //const brainStem = "M 185 218 Q 190 230 195 245 Q 195 255 192 265 Q 189 272 195 275 Q 201 272 198 265 Q 201 255 201 245 Q 206 230 211 218 Q 208 220 185 218 Z";
     //const brainPath = `${leftHemisphere} ${rightHemisphere} ${brainStem}`;
 
     // Define nodes (neurons) positioned throughout the brain
@@ -125,21 +125,7 @@ const BrainActivity = () => {
         });
     });
 
-    // Trigger neural activity
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // Randomly select a starting node by ID
-            const randomIndex = Math.floor(Math.random() * nodes.length);
-            const startNodeId = nodes[randomIndex]?.id;
-            if (startNodeId !== undefined) {
-                activateNode(startNodeId);
-            }
-        }, 1500); // Trigger every 1.5 seconds
-
-        return () => clearInterval(interval);
-    }, []);
-
-    const activateNode = (nodeId: number) => {
+    const activateNode = useCallback((nodeId: number) => {
         // Clear any existing states to prevent stuck animations
         setActiveNodes(new Set());
         setActiveConnections(new Set());
@@ -202,7 +188,21 @@ const BrainActivity = () => {
             setFadingNodes(new Set());
             setFadingConnections(new Set());
         }, 1200);
-    };
+    }, [nodes]);
+
+    // Trigger neural activity
+    useEffect(() => {
+        const interval = setInterval(() => {
+            // Randomly select a starting node by ID
+            const randomIndex = Math.floor(Math.random() * nodes.length);
+            const startNodeId = nodes[randomIndex]?.id;
+            if (startNodeId !== undefined) {
+                activateNode(startNodeId);
+            }
+        }, 1500); // Trigger every 1.5 seconds
+
+        return () => clearInterval(interval);
+    }, [activateNode, nodes]);
 
     return (
         <div className="w-full flex justify-center items-center">

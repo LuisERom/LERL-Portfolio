@@ -87,7 +87,7 @@ export default function Home() {
         {/* Introduction Section */}
         <div className="flex-1">
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-2">
-            Hi! I'm Luis.
+            Hi! I&apos;m Luis.
             <motion.span
               animate={{
                 rotate: waveAnimation ? [0, 14, -8, 14, -8, 0] : 0,
