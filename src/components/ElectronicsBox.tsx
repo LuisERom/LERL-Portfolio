@@ -37,7 +37,7 @@ const ElectronicsBox = () => {
         let lastDPR = 0;
         let lastInitWidth = 0;
         let lastInitHeight = 0;
-        let animationStartTime = Date.now();
+        const animationStartTime = Date.now();
 
         const resizeCanvas = () => {
             const rect = container.getBoundingClientRect();
@@ -80,6 +80,7 @@ const ElectronicsBox = () => {
             const centerX = width / 2;
             const centerY = height / 2;
             const chipSize = 25;
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const pinLength = 4;
             const pinsPerSide = 4;
 
@@ -1564,7 +1565,7 @@ const ElectronicsBox = () => {
             const activeComponents = new Set<string>();
             const activeVias = new Set<string>();
 
-            traceAnimations.forEach((anim, idx) => {
+            traceAnimations.forEach((anim) => {
                 const cycleElapsed = elapsed % cycleDuration;
                 let animTime = cycleElapsed - anim.startTime;
 
@@ -1610,7 +1611,7 @@ const ElectronicsBox = () => {
                             activeVias.add(`${anim.via.x},${anim.via.y}`);
                         }
                     }
-                } catch (e) {
+                } catch {
                     // Skip if coordinates aren't available
                 }
             });

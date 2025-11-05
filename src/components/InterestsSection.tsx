@@ -15,7 +15,7 @@ const InterestsSection = () => {
             viewport={{ once: true, amount: 0.1, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
         >
-            <h2 className="text-lg font-bold mb-3 text-center">I'm interested in...</h2>
+            <h2 className="text-lg font-bold mb-3 text-center">I&apos;m interested in...</h2>
 
             <div className="grid grid-cols-2 gap-2">
                 {/* Top Left - Neuroscience/AI */}
