@@ -23,10 +23,13 @@ interface Obstacle {
 const ElectromagneticWave = () => {
     // DISABLED: Click effect is deactivated
     const [waves, setWaves] = useState<Wave[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [obstacles, setObstacles] = useState<Obstacle[]>([]);
     const waveIdRef = useRef(0);
     const wavesRef = useRef<Wave[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const animationFrameRef = useRef<number | undefined>(undefined);
     const processedCollisionsRef = useRef<Set<string>>(new Set());
 
@@ -83,6 +86,7 @@ const ElectromagneticWave = () => {
     }, []);
 
     useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const handleClick = (e: MouseEvent) => {
             // Don't trigger on button clicks or interactive elements to avoid conflicts
             const target = e.target as HTMLElement;
