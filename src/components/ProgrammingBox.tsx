@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const ProgrammingBox = () => {
@@ -34,11 +34,11 @@ const ProgrammingBox = () => {
     }, []);
 
     // Terminal commands and logs
-    const commands = [
+    const commands = useMemo(() => [
         '> npm run build',
         '> python app.py',
         '> cargo build',
-    ];
+    ], []);
 
     const logLines = [
         '✔ Compiling modules...',
@@ -48,7 +48,7 @@ const ProgrammingBox = () => {
 
     // Main animation cycle
     useEffect(() => {
-        let startTime = Date.now();
+        const startTime = Date.now();
         let currentCommandIndex = 0;
 
         const animate = () => {
@@ -116,7 +116,7 @@ const ProgrammingBox = () => {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, []);
+    }, [commands]);
 
     // Cursor blink effect
     useEffect(() => {
@@ -127,7 +127,6 @@ const ProgrammingBox = () => {
         return () => clearInterval(blinkInterval);
     }, []);
 
-    const textColor = isDarkMode ? colors.cyan : colors.lightCyan;
     const promptColor = isDarkMode ? colors.lightCyan : colors.cyan;
     const successColor = isDarkMode ? colors.green : '#00cc66';
 

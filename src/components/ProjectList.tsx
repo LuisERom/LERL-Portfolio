@@ -37,7 +37,6 @@ export default function ProjectList({ groupedProjects, sortedYears, onProjectCli
                                 key={i}
                                 project={project}
                                 isLeft={isLeft}
-                                index={i}
                                 onClick={() => onProjectClick(project)}
                             />
                         );

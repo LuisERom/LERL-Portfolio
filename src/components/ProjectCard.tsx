@@ -6,11 +6,10 @@ import { tagStyles } from "@/data/projects";
 interface ProjectCardProps {
     project: Project;
     isLeft: boolean;
-    index: number;
     onClick: () => void;
 }
 
-export default function ProjectCard({ project, isLeft, index, onClick }: ProjectCardProps) {
+export default function ProjectCard({ project, isLeft, onClick }: ProjectCardProps) {
     const [isVisible, setIsVisible] = useState(false);
     const sentinelRef = useRef<HTMLDivElement>(null);
     const firstImage = project.images && project.images.length > 0 ? project.images[0] : null;
@@ -34,11 +33,12 @@ export default function ProjectCard({ project, isLeft, index, onClick }: Project
 
     return (
         <div
-            className={`mb-20 relative portrait-center ${isLeft
+            className={`mb-20 relative portrait-center project-card-wrapper ${isLeft
                 ? 'md:w-[calc(65%-2rem)] md:mr-auto'
                 : 'md:w-[calc(65%-2rem)] md:ml-auto'
                 }`}
             style={isLeft ? { transform: 'translateX(-3rem)' } : { transform: 'translateX(3rem)' }}
+            data-project-card="true"
         >
             {/* Small sentinel at the very top - triggers when top edge enters viewport */}
             <div ref={sentinelRef} className="absolute top-0 left-0 w-full h-px pointer-events-none" />
@@ -53,7 +53,11 @@ export default function ProjectCard({ project, isLeft, index, onClick }: Project
                     default: { duration: 0.15, ease: "easeOut" }
                 }}
                 className={`relative cursor-pointer group portrait-text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}
-                onClick={onClick}
+                data-project-card="true"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onClick();
+                }}
             >
                 {/* Timeline dot - positioned at card edge closest to center line */}
                 <div className={`absolute top-1.5 hidden md:block w-3 h-3 bg-blue-600 rounded-full group-hover:scale-110 transition z-10 portrait-hide ${isLeft ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'
