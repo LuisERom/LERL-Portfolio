@@ -59,9 +59,9 @@ export default function ProjectModal({
     // Get the first image as logo (if available)
     const logoImage = project.images && project.images.length > 0 ? project.images[0] : null;
     // Get remaining images for carousel (skip first if it's the logo)
-    const carouselImages = project.images && project.images.length > 1 ? project.images.slice(1) : project.images || [];
-    // Determine if logo is excluded from carousel (affects figure numbering)
-    const logoExcluded = project.images && project.images.length > 1;
+    const carouselImages = React.useMemo(() => {
+        return project.images && project.images.length > 1 ? project.images.slice(1) : project.images || [];
+    }, [project.images]);
 
 
     // Calculate maximum image height from all carousel images
@@ -129,20 +129,6 @@ export default function ProjectModal({
         }
     };
 
-    const getVisibleImages = () => {
-        if (carouselImages.length <= 2) return carouselImages;
-
-        const prevIndex = (currentImageIndex - 1 + carouselImages.length) % carouselImages.length;
-        const nextIndex = (currentImageIndex + 1) % carouselImages.length;
-
-        return [
-            carouselImages[prevIndex],
-            carouselImages[currentImageIndex],
-            carouselImages[nextIndex]
-        ];
-    };
-
-    const visibleImages = getVisibleImages();
     const hasMultipleImages = carouselImages.length > 2;
 
     return (

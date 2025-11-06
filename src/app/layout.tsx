@@ -1,5 +1,4 @@
 // layout.tsx
-import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 import { ReactNode } from "react";
 import Link from "next/link";
