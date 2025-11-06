@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 export default function CurrentFocus() {
     const focuses = [
         {
-            title: "Lab Automation Copilot",
-            description: "Currently surveying scientists to map out pain points in real-world lab workflows.",
+            title: "AI-Powered Research Assistant",
+            description: "Working on an early-stage project that brings together AI, robotics, and life sciences. I’m exploring how automation can transform scientific research and open new possibilities for discovery in the lab. Currently participating in the NSF I-Corps program to explore customer needs and validate the concept.",
             tags: ["Entrepreneurship", "Research", "AI"],
             link: "mailto:you@example.com",
             linkText: "Want to share your lab frustrations?",
@@ -13,13 +13,13 @@ export default function CurrentFocus() {
         },
         {
             title: "Applying to Graduate School",
-            description: "Pursuing advanced research opportunities in electrical engineering and photonics.",
+            description: "Pursuing advanced research opportunities in Electrical Engineering.",
             tags: ["Academic"],
             emoji: "🎓"
         },
         {
             title: "UGA OTDR Fiber Authentication",
-            description: "Working on optical time-domain reflectometry for fiber optic authentication systems.",
+            description: "Developing a machine learning and rule-based system to identify and authenticate single-mode optical fibers using OTDR backscatter data. Built a Python pipeline with SVM classification, achieving 98.5 % accuracy across eight fibers. Currently enhancing feature extraction to define unique rule-based patterns for improved authentication reliability.",
             tags: ["Research", "Hardware", "Academic"],
             emoji: "🔬"
         }

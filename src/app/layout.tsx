@@ -13,35 +13,26 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="dark light" />
+        <style dangerouslySetInnerHTML={{
+          __html: `html{background-color:#18181b!important;color:#fafafa!important}html:not(.dark){background-color:#f4f4f5!important;color:#09090b!important}body{background-color:#18181b!important;color:#fafafa!important;min-height:100vh}`
+        }} />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(
-      function () {
-        try {
-          const stored = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'dark' || (!stored && prefersDark)) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch (_) {}
-      })();
-    `
+            __html: `(function(){try{document.documentElement.classList.add('dark');localStorage.setItem('theme','dark');document.documentElement.style.cssText='background-color:#18181b!important;color:#fafafa!important';var s=document.createElement('style');s.textContent='body{background-color:#18181b!important;color:#fafafa!important}';document.head.appendChild(s)}catch(_){document.documentElement.style.cssText='background-color:#18181b!important;color:#fafafa!important';var s=document.createElement('style');s.textContent='body{background-color:#18181b!important;color:#fafafa!important}';document.head.appendChild(s)}})();`
           }}
         />
       </head>
       <body className="min-h-screen bg-zinc-100 text-black dark:bg-zinc-900 dark:text-white font-sans">
         <ThemeInit />
-        <header className="p-4 border-b border-zinc-200 dark:border-zinc-700 relative z-10">
+        <header className="sticky top-0 z-50 p-4 border-b border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
           <nav className="flex justify-between max-w-5xl mx-auto">
             <h1 className="text-xl font-semibold">Luis E. Román Lizasoain</h1>
             <ul className="flex gap-4 text-sm items-center">
               <li><Link href="/" className="hover:underline">Projects</Link></li>
               <li><Link href="/contact" className="hover:underline">Contact</Link></li>
-              <li><ThemeToggle /></li>
             </ul>
           </nav>
         </header>

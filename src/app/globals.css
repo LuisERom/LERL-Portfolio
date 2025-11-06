@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent white flash - default to dark mode */
+html {
+  background-color: #18181b;
+  color: #fafafa;
+}
+
+html:not(.dark) {
+  background-color: #f4f4f5;
+  color: #09090b;
+}
+
+body {
+  background-color: inherit;
+  color: inherit;
+}
+
+/* Hide main header when modal is open */
+body.modal-open header {
+  display: none !important;
+}
+
 .zoom-overlay {
   background-color: rgba(0, 0, 0, 0.85) !important;
 }

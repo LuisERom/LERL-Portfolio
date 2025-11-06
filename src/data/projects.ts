@@ -18,8 +18,8 @@ export const projects: Project[] = [
         description: "Completed coursework, capstone project, and multiple research/startup initiatives at the same time.",
         status: "Completed — Graduated in 2025 with a 3.7 GPA",
         tags: ["Academic"],
-        details: "Earned a B.S. in Electrical Engineering at the Polytechnic University of Puerto Rico. Focused on Communications, Signals & Control Systems. During my time there, I launched my first startup (Vienvo), led multiple projects, and collaborated on hardware/software research at PUPR, photonics research at UGA and DNA origami research at UC Berkeley.",
-        date: "2020 – 2025",
+        details: "Earned a B.S. in Electrical Engineering at the Polytechnic University of Puerto Rico. Focused on Communications, Signals and Control Systems. During my time there, I launched my first startup (Vienvo), led multiple projects, and collaborated on hardware/software research at PUPR, photonics research at UGA and DNA origami research at UC Berkeley.",
+        date: "Aug 2020 – May 2025",
         images: [
             {
                 src: "/images/PUPR.jpeg",
@@ -27,25 +27,27 @@ export const projects: Project[] = [
             },
             {
                 src: "/images/Grad_Img.jpg",
-                alt: "Graduation Photo"
+                alt: "Graduation Photo",
+                caption: "Graduation Photo"
             }
         ],
     },
     {
-        title: "Capstone Project – Psyche Asteroid Regolith Processing",
-        description: "Designed a metal extraction system for the Psyche asteroid using in-situ resource strategies.",
-        date: "2024 – 2025",
+        title: "Psyche Asteroid ISRU Regolith Refinement Processing Capstone Project",
+        description: "University of Georgia – Capstone Researcher",
+        institution: "University of Georgia * Sponsored by NASA Psyche Mission, Arizona State University * Advisor: Dr. Jorge I. Rodriguez",
+        date: "Aug 2024 – May 2025",
         tags: ["Research", "3D Design", "Academic"],
-        details: "Capstone project focused on enabling in-situ resource utilization (ISRU) for the Psyche asteroid. Investigated environmental conditions and regolith properties to design a system for extracting metals like iron, aluminum, and silicon. Explored analogs from lunar and Martian missions and proposed a vapor deposition-based build system for microgravity applications.",
+        details: "Developed a concept for an in-situ resource utilization (ISRU) system capable of refining metallic regolith from the Psyche asteroid to support future additive manufacturing missions. The project simulated and modeled particle crushing, separation, and magnetic filtration under Psyche’s low gravity and extreme temperature conditions. I led the mechanical-electrical interface and CAD modeling of the system in Fusion 360, incorporating energy efficiency and DFM constraints into subsystem designs. The final concept demonstrated a feasible method for reducing deep-space mission weight and cost through on-site material processing, presented at the NASA-sponsored UGA Capstone Expo (2025).\n\n More information can be found here: https://psyche.ssl.berkeley.edu/get-involved/capstone-projects/capstone-projects-iridium-class/additive-manufacturing-with-hypothesized-surface-materials-uga-c/",
         status: "Completed — Created the solution and CAD model of the capstone project",
         images: [
             {
                 src: "/images/UGA_CapstoneLogos.png",
-                alt: "Vienvo logo"
+                alt: "UGA, NASA, and Psyche Mission Logos"
             },
             {
                 src: "/images/3D_Print_Capstone.jpg",
-                alt: "Prototype on desk",
+                alt: "3D Printed Regolith Processing Concept Design",
                 caption: "3D printed prototype of the regolith processing system"
             },
             {
@@ -56,15 +58,16 @@ export const projects: Project[] = [
         ],
     },
     {
-        title: "Year 5 Research - UGA Photonics Project",
-        description: "Photonic STDP neural circuit with machine learning.",
+        title: "Optical STDP Simulation — Research Exploration ",
+        description: "University of Georgia – Undergraduate Researcher",
         status: "Completed - Built and tested the STDP response simulation circuit",
-        tags: ["AI", "Research", "Academic"],
-        details: "Designed and simulated a photonic circuit implementing spike-timing-dependent plasticity.",
+        tags: ["Research", "Academic"],
+        details: "Simulated spike-timing-dependent plasticity (STDP) in photonic hardware using OptiSystem, replicating and extending findings from a WAVE Lab study on semiconductor optical amplifier (SOA)-based learning dynamics. The setup used Mach–Zehnder modulators and a traveling-wave SOA to generate pre- and post-synaptic optical pulses at different frequencies. By adjusting pulse timing, I modeled potentiation and depression behavior analogous to neuronal learning. The simulation produced distinct STDP curves—potentiation and depression windows—demonstrating the timing-dependent gain response of the SOA. This project deepened my understanding of optical neuromorphic computing principles and exposed limitations in parameter sensitivity and response stability of the modeled system.\n\n\n Reference paper: Photonic implementation of a neuronal learning algorithm based on spike timing dependent plasticity \n Reference link: https://ieeexplore.ieee.org/document/7121946",
         techStack: ["Python", "Machine Learning", "Photonics"],
-        role: "Solo developer — handled all coding and circuit design",
+        role: "",
         link: "https://wavelab.engr.uga.edu/",
-        date: "2024",
+        institution: "University of Georgia * Advisor: Dr. Mable Fok (WAVE Lab)",
+        date: "Aug 2024 - Dec 2024",
         images: [
             {
                 src: "/images/WaveLab.jpeg",
@@ -84,20 +87,24 @@ export const projects: Project[] = [
                 src: "/images/STDP_Potentiation.png",
                 alt: "Potentiation curve",
                 caption: "Potentiation curve for photonic STDP"
-            }
+            },
+            {
+                src: "/images/STDP_Paper_Curve.png",
+                alt: "STDP Reference Curve",
+                caption: "STDP response reference curve from lab paper"
+            },
         ],
     },
     {
-        title: "Vienvo - Cable Management Startup (www.vienvo.com)",
+        title: "Vienvo, LLC – Co-founder and President",
         description: "Cable management startup with hardware prototypes.",
         status: "Completed — Discontinued after contacting 500+ hypothesized clients — low customer urgency validated",
         tags: ["Entrepreneurship", "Hardware", "Software", "3D Design"],
-        details: "Created a modular cable hub, conducted 500+ user interviews, and tested market demand. Shut down after validation phase. Webpage: www.vienvo.com",
+        details: "Led the design and prototyping of an electronic cable-management system that automated cable retraction through motorized control. Designed the circuit in EasyEDA, modeled the housing in Fusion 360, and built a working prototype using Arduino-based programming. Conducted 500+ user interviews across two entrepreneurship programs to validate market demand and manufacturing feasibility. Ended the project after confirming that the problem did not justify production cost, gaining experience in hardware development, system integration, and user validation.\n\n Concept video: https://youtu.be/Q6_grfdx7ss \n\n Webpage: www.vienvo.com",
         techStack: ["Arduino", "3D Printing", "Electronics Prototyping"],
-        role: "Solo founder — handled all coding, prototyping, and business development",
+        role: "",
         link: "https://www.vienvo.com",
-        date: "2022 – 2024",
-        video: "https://youtu.be/Q6_grfdx7ss",
+        date: "Dec 2022 – Oct 2024",
         images: [
             {
                 src: "/images/Vienvo_LogoT.png",
@@ -107,19 +114,25 @@ export const projects: Project[] = [
                 src: "/images/VienvoHub_SideNoLidC2.png",
                 alt: "Vienvo Hub Side View",
                 caption: "Side view of the Vienvo modular hub without lid"
+            },
+            {
+                src: "/images/Vienvo_ButtonDeck.png",
+                alt: "Vienvo Button Deck",
+                caption: "Side view of the Vienvo button deck"
             }
         ],
     },
     {
-        title: "Summer Research - UC Berkeley SUPERB Program",
-        description: "DNA origami biosensor project for molecular detection.",
+        title: "Detection of Fluorescent Dye Binding to Basket-Shaped DNA Origami",
+        description: "University of California, Berkeley – Summer Undergraduate Researcher",
         status: "Completed — Realized the experiments and proved the attachment of fluorescent molecules to DNA origami",
         tags: ["Research", "Academic"],
-        details: "Worked with Dr. Tikhomirov's lab on DNA origami and fluorescence-based molecule detection for biosensing applications.",
+        details: "This project explored how fluorescent molecules can be integrated into DNA origami nanostructures for potential use in continuous biomarker detection. I fabricated basket-shaped DNA origami with 23- and 46-site adaptor configurations, which act as bridges between the DNA structure and fluorescent dyes (Cy3 and Cy5). The structural integrity of the origami was confirmed through gel electrophoresis, and fluorescence imaging verified strong Cy3 binding to its complementary adaptors. These results demonstrated stable fluorophore incorporation and established a foundation for future biosensing applications. Limitations in Cy5 detection, due to equipment wavelength range, were also identified. The findings were presented at the UC Berkeley SUPERB-AI4E Tech Talk (2024).",
         techStack: ["Python", "Fluorescence Microscopy"],
         role: "Team member — contributed to experimental design and data analysis",
+        institution: "University of California, Berkeley * SUPERB Program * Advisors: Dr. Grigory Tikhomirov, Dr. Soyeon Lee",
         link: "https://superb.berkeley.edu/",
-        date: "2024",
+        date: "Jun 2024 - Aug 2024",
         images: [
             {
                 src: "/images/UC_Berkeley_Embleme.jpg",
@@ -133,15 +146,15 @@ export const projects: Project[] = [
         ],
     },
     {
-        title: "Year 4 Research - Baby & Pet Heat Stroke Death Prevention System for Vehicles",
-        description: "Sensor system to detect and alert if a baby is left in a hot car.",
+        title: "Multi-Sensor Vehicle System for Infant and Pet Heatstroke Prevention",
+        description: "Polytechnic University of Puerto Rico – Undergraduate Researcher",
         status: "Completed — Built the prototype circuit and a large part of the codebase",
         tags: ["Hardware", "Research", "Software", "Academic"],
-        details: "Built an embedded system with heat/humidity sensors, microcontroller, and wireless alert features for infant safety.",
+        details: "Designed and tested an embedded system that detects infants or pets left inside vehicles and activates preventive safety measures. I first conducted temperature experiments to characterize interior heat-rise behavior, confirming cabin temperatures can exceed 120 °F within minutes. Using these results, I led the electronics design and Arduino programming of a prototype integrating seat-occupancy, infrared, Hall-effect, and temperature sensors. The system triggers alerts through a Bluetooth beeper and powers auxiliary ventilation using a solar-assisted battery circuit. The project demonstrated a functional proof-of-concept for a low-cost, adaptable solution to prevent heatstroke-related fatalities in vehicles.",
         techStack: ["Arduino", "Embedded Systems"],
-        role: "Solo developer — handled all coding and prototyping",
+        institution: "Polytechnic University of Puerto Rico * URP-HOS Project * Advisor: Prof. Wilfredo Torres-Vélez * Lead Researcher: Elvis J. Sánchez Robles",
         link: "https://www.youtube.com/watch?v=FDJzQJS0elk",
-        date: "2023 – 2024",
+        date: "Aug 2023 - Aug 2024",
         images: [
             {
                 src: "/images/PUPR.jpeg",
@@ -160,14 +173,14 @@ export const projects: Project[] = [
         ],
     },
     {
-        title: "Quality Engineer Intern - Lutron Internship",
-        description: "7-month quality engineering internship in automation.",
+        title: "Lutron Electronics – Quality Engineer CO-OP",
+        description: "9-month quality engineering CO-OP at a lighting control manufacturing facility.",
         status: "Completed — Built and tested a 100% analogous locking mechanism for a HIPOT testing machine",
         tags: ["Hardware", "Industry"],
-        details: "Automated QA procedures for lighting control hardware and wrote test software for product validation.",
+        details: "Worked as a Quality Engineer Co-op at Lutron Electronics, contributing to both process and hardware improvement initiatives. I designed an analog locking circuit to prevent premature lid opening on a HIPOT tester, improving testing reliability and safety. The circuit was built and validated on breadboard, simulated in LTSpice, and converted to a PCB design in EasyEDA for manufacturing. I also organized component data from product manuals to create a unified reference system for assembly operations. This experience strengthened my understanding of hardware validation, analog control design, and data organization in large-scale production environments.",
         techStack: ["Python", "Test Automation"],
         role: "Intern — assisted in automation and quality assurance",
-        date: "2023 – 2024",
+        date: "Jul 2023 – Mar 2024",
         images: [
             {
                 src: "/images/LutronLogo.jpg",
@@ -186,14 +199,14 @@ export const projects: Project[] = [
         ]
     },
     {
-        title: "NASA Competition Student Rocket Launch",
+        title: "NASA Student Launch – Payload Sensors Electronics Engineer",
         description: "Built the payload system circuit for a student research rocket as part of a NASA launch competition.",
         status: "Completed — Built the rocket's payload sensor system circuit and software",
         tags: ["Hardware", "Software", "Academic"],
-        details: "Collaborated on the NASA Student Launch Project at PUPR, contributing to the design and integration of electrical systems and telemetry for a research rocket. Focused on data acquisition, safety protocols, and launch readiness in a competitive engineering environment.",
+        details: "Developed the payload sensor and data acquisition system for a rocket-based drone payload in the NASA Student Launch Competition. Designed schematics and PCB layouts in EasyEDA and implemented the system using Arduino Nano 33 IoT for sensor control and data logging. The payload captured acceleration, air quality, temperature, pressure, vibration, and GPS data during flight and stored results to an onboard SD card. I also programmed the activation logic to trigger data collection automatically once the payload was released from the rocket. Testing and breadboard validation confirmed successful data acquisition and system response throughout simulated flight conditions.",
         techStack: ["Arduino", "Embedded Systems"],
         role: "Team member — system design and integration",
-        date: "2023 – 2024",
+        date: "Aug 2023 - May 2024",
         images: [
             {
                 src: "/images/NASA.png",
@@ -216,15 +229,16 @@ export const projects: Project[] = [
         description: "Custom multiplayer experience with game logic scripting.",
         status: "Completed — Built the game and monetization features",
         tags: ["Software"],
-        details: "Built a Roblox game focusing on multiplayer mechanics, using Lua for scripting and monetization features. Play at: https://www.roblox.com/games/5214994542/Knockout#!/game-instances",
+        details: "Developed a multiplayer Roblox game featuring several competitive minigames and dynamic environments. Programmed in Lua, implementing game logic, player matchmaking, and real-time scoring systems. Designed multiple interactive modes—such as obstacle courses, survival challenges, and team-based rounds—and built all maps and assets within Roblox Studio. Integrated an inventory and currency system that saves player data across sessions, along with an in-game store and leaderboard tracking. The project combined game design, scripting, and database management, resulting in a fully functional multiplayer experience.\n\n Play at: https://www.roblox.com/games/5214994542/Knockout#!/game-instances",
         techStack: ["Lua", "Roblox Studio"],
         role: "Solo developer — handled all coding and asset design",
         link: "https://www.roblox.com/games/5214994542/Knockout#!/game-instances",
-        date: "2020",
+        date: "Mar 2020 - Dec 2020",
         images: [
             {
                 src: "/images/Knockout_Logo.png",
-                alt: "Vienvo logo"
+                alt: "Knockout logo",
+                caption: "Knockout logo"
             }
         ],
     },

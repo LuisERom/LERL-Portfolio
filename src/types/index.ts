@@ -11,5 +11,6 @@ export type Project = {
     link?: string;
     video?: string;
     workimage?: string;
+    institution?: string; // Manual institution/university information
 };
 
