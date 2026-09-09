@@ -132,7 +132,7 @@ export default function Home() {
         ⚙️ Hardware & Embedded Systems &nbsp;&nbsp;🧠 Artificial Intelligence  &nbsp;&nbsp;🔬 Photonics & Optics &nbsp;&nbsp;🚀 Research & Development
       </motion.p>
 
-      <CurrentFocus />
+      <CurrentFocus onFocusClick={setSelectedProject} />
 
       <TagFilter activeTag={activeTag} onTagChange={setActiveTag} />
 
