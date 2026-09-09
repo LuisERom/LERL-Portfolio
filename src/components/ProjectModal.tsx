@@ -65,7 +65,7 @@ export default function ProjectModal({
     const logoImage = project.images && project.images.length > 0 ? project.images[0] : null;
     // Get remaining images for carousel (skip first if it's the logo)
     const carouselImages = React.useMemo(() => {
-        return project.images && project.images.length > 1 ? project.images.slice(1) : project.images || [];
+        return project.images && project.images.length > 1 ? project.images.slice(1) : [];
     }, [project.images]);
 
 
@@ -210,6 +210,20 @@ export default function ProjectModal({
                         {project.institution && (
                             <div className="text-center mb-8 text-zinc-600 dark:text-zinc-400">
                                 <p className="text-lg font-semibold">{project.institution}</p>
+                            </div>
+                        )}
+
+                        {project.link && (
+                            <div className="text-center mb-8">
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 dark:text-blue-400 hover:underline text-lg"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    {project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                                </a>
                             </div>
                         )}
 
