@@ -10,11 +10,11 @@ import { tagStyles } from "@/data/projects";
 const focuses: Project[] = [
     {
         title: "Job Searching",
-        description: "Looking for an AI engineering role in New York.",
+        description: "Looking for an AI and software engineering role in New York, in research or industry.",
         status: "Actively looking",
-        tags: ["Industry", "AI"],
+        tags: ["AI", "Software", "Research", "Industry"],
         details:
-            "I am looking for an AI engineering role in New York. I want to build software around language models and retrieval, and take that work from the product decision through a system people can use.",
+            "I am looking for an AI and software engineering role in New York, in research or industry. I want to build software around language models and retrieval, and take that work from the product decision through a system people can use.",
         date: "2026 – Present",
     },
 ];
