@@ -129,7 +129,7 @@ export default function Home() {
         viewport={{ once: true, amount: 0.1, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
       >
-        ⚙️ Hardware & Embedded Systems &nbsp;&nbsp;🧠 Artificial Intelligence  &nbsp;&nbsp;🔬 Photonics & Optics &nbsp;&nbsp;🚀 Research & Development
+        🧠 Artificial Intelligence &nbsp;&nbsp;🔬 Research &nbsp;&nbsp;💡 Photonics & Optics &nbsp;&nbsp;⚙️ Hardware & Embedded Systems
       </motion.p>
 
       <CurrentFocus onFocusClick={setSelectedProject} />
