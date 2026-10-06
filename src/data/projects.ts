@@ -15,9 +15,9 @@ export const projects: Project[] = [
     {
         title: "GnoRA",
         description: "AI research assistant that helps researchers diagnose a failed experiment from their lab documents and the scientific literature.",
-        status: "Co-founder and CEO",
+        status: "Co-founder and CEO. Accepted into Canopy by Founders Inc.",
         tags: ["Entrepreneurship", "Research", "AI", "Software"],
-        details: "I co-founded GnoRA and served as CEO from January through September 2026. I led product and AI architecture for a three-person team and wrote most of the codebase.\n\n" +
+        details: "I co-founded GnoRA and served as CEO from January through September 2026. I led product and AI architecture for a three-person team and wrote most of the codebase. GnoRA was accepted into Canopy by Founders Inc. and completed the program.\n\n" +
             "The product helps a researcher work out why an experiment failed, using that lab's documents and the scientific literature. I built the document and retrieval path: PDF and table extraction, OCR for scanned pages, hierarchical chunking, embeddings, and vector search. Retrieval feeds generation that tracks hypotheses and evidence and writes a structured failure-analysis report.\n\n" +
             "The application is Next.js, React, and TypeScript, with Django REST Framework, PostgreSQL, Celery, Redis, and Qdrant. About 15 people used it.",
         date: "Jan 2026 – Sep 2026",
@@ -43,6 +43,16 @@ export const projects: Project[] = [
             {
                 src: "/images/NSF-I-CORPS-Logo.png",
                 alt: "NSF I-Corps logo"
+            },
+            {
+                src: "/images/I-Corps_Certificate_Award.jpg",
+                alt: "Luis and his co-founder receiving NSF I-Corps customer discovery certificates",
+                caption: "Receiving the NSF I-Corps customer discovery certificate with my co-founder"
+            },
+            {
+                src: "/images/I-Corps_Cohort20.jpg",
+                alt: "NSF I-Corps Puerto Rico Cohort 20 group photo",
+                caption: "NSF I-Corps Puerto Rico Cohort 20"
             },
             {
                 src: "/images/I-Corps_Certificate_LuisRoman.jpg",
