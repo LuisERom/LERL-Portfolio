@@ -10,28 +10,12 @@ import { tagStyles } from "@/data/projects";
 const focuses: Project[] = [
     {
         title: "Job Searching",
-        description: "Looking for forward deployed engineering and product engineering roles in NYC.",
-        status: "Actively looking — NYC",
-        tags: ["Industry"],
+        description: "Looking for an AI engineering role in New York.",
+        status: "Actively looking",
+        tags: ["Industry", "AI"],
         details:
-            "I am currently searching for forward deployed engineering and product engineering roles in New York City. I am looking for teams where I can work close to customers, ship product, and take technical problems from discovery through a shipped solution.",
+            "I am looking for an AI engineering role in New York. I want to build software around language models and retrieval, and take that work from the product decision through a system people can use.",
         date: "2026 – Present",
-    },
-    {
-        title: "AI-Powered Research Assistant",
-        description: "Working on an early-stage project that brings together AI and life sciences.",
-        status: "In progress",
-        tags: ["Entrepreneurship", "Research", "AI"],
-        details:
-            "Building GnoRA Labs, an early-stage project that brings together AI and life sciences to help researchers work more effectively.",
-        date: "2025 – Present",
-        link: "https://www.gnoralabs.com/",
-        images: [
-            {
-                src: "/images/GnoraLabs_Logo.png",
-                alt: "GnoRA Labs logo",
-            },
-        ],
     },
 ];
 
@@ -52,7 +36,7 @@ export default function CurrentFocus({ onFocusClick }: CurrentFocusProps) {
                 Current Focus
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 pt-14">
+            <div className={`grid gap-4 mb-12 ${focuses.length > 1 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"}`}>
                 {focuses.map((focus, index) => {
                     const logoImage = focus.images && focus.images.length > 0 ? focus.images[0] : null;
 

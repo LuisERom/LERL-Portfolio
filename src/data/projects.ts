@@ -13,13 +13,31 @@ export const tagStyles: { [key: string]: string } = {
 
 export const projects: Project[] = [
     {
+        title: "GnoRA",
+        description: "AI research assistant that helps researchers diagnose a failed experiment from their lab documents and the scientific literature.",
+        status: "Co-founder and CEO",
+        tags: ["Entrepreneurship", "Research", "AI", "Software"],
+        details: "I co-founded GnoRA and served as CEO from January through September 2026. I led product and AI architecture for a three-person team and wrote most of the codebase.\n\n" +
+            "The product helps a researcher work out why an experiment failed, using that lab's documents and the scientific literature. I built the document and retrieval path: PDF and table extraction, OCR for scanned pages, hierarchical chunking, embeddings, and vector search. Retrieval feeds generation that tracks hypotheses and evidence and writes a structured failure-analysis report.\n\n" +
+            "The application is Next.js, React, and TypeScript, with Django REST Framework, PostgreSQL, Celery, Redis, and Qdrant. About 15 people used it.",
+        date: "Jan 2026 – Sep 2026",
+        techStack: ["Next.js", "React", "TypeScript", "Python", "Django REST Framework", "PostgreSQL", "Qdrant"],
+        link: "https://www.gnoralabs.com/",
+        images: [
+            {
+                src: "/images/GnoraLabs_Logo.png",
+                alt: "GnoRA Labs logo",
+            },
+        ],
+    },
+    {
         title: "NSF I-Corps Program - AI-Powered Research Assistant",
         workimage: "/images/NSF-I-CORPS-Logo.png",
         description: "NSF-funded entrepreneurship program focused on translating lab technologies to the market through customer discovery.",
-        status: "Completed — Led 100 structured customer discovery interviews with PIs and graduate students",
+        status: "Completed. Personally conducted about 80 of 102 customer discovery interviews",
         tags: ["Entrepreneurship"],
-        details: "Selected for the NSF I-Corps Puerto Rico 20th cohort to test whether a lab-automation concept (LabOS) solved real problems in academic research environments. Over six weeks, I led 100 customer discovery interviews with PIs and graduate students to map experimental workflows, surface pain points, and understand how human error and protocol variability contribute to failed experiments. \n\n" +
-            "Through the I-Corps curriculum, I refined our problem and customer hypotheses, iterated on the value proposition, and evaluated the potential academic use cases for LabOS. The program strengthened my skills in evidence-based entrepreneurship, customer discovery, and early business model design grounded in real researcher feedback.",
+        details: "Selected for the NSF I-Corps Puerto Rico 20th cohort to test whether a lab-automation concept (LabOS) solved real problems in academic research environments. Over six weeks, I personally conducted about 80 of the team's 102 interviews with principal investigators and graduate students. The conversations mapped experimental workflows, where experiments fail, and whether lab automation was the right product.\n\n" +
+            "Those interviews showed laboratory automation was the wrong premise. The work turned toward diagnosing failed experiments, which became GnoRA.",
         date: "Oct 2025 – Nov 2025",
         images: [
             {
@@ -75,6 +93,34 @@ export const projects: Project[] = [
                 src: "/images/UGA_Capstone_Poster.png",
                 alt: "Testing session with user",
                 caption: "UGA Capstone project poster"
+            }
+        ],
+    },
+    {
+        title: "Single-Mode Fiber OTDR Authentication",
+        description: "Machine-learning classification of optical time-domain reflectometry traces from known fiber endpoints.",
+        status: "Classified repeated OTDR traces from known single-mode fiber endpoints",
+        tags: ["Research", "AI", "Academic"],
+        details: "At the University of Georgia WAVE Lab I worked on fiber authentication from optical time-domain reflectometry. I acquired the traces, built the Python processing path from the raw SOR files through alignment, detrending, and feature extraction, and evaluated KNN, support-vector-machine, and neural-network classifiers.\n\n" +
+            "The final set was 656 measured traces from eight known endpoints on five single-mode fibers. On a later 90/10 split of those measured traces, all three models reached 98.44% accuracy. That result classifies repeated traces from endpoints the models had already seen.",
+        techStack: ["Python", "scikit-learn", "NumPy", "pandas"],
+        institution: "University of Georgia * WAVE Lab * Advisor: Dr. Mable Fok",
+        link: "https://wavelab.engr.uga.edu/",
+        date: "Jan 2025 – May 2025",
+        images: [
+            {
+                src: "/images/WaveLab.jpeg",
+                alt: "WaveLab logo"
+            },
+            {
+                src: "/images/OTDR_Trace_A1.png",
+                alt: "Measured OTDR trace from one fiber endpoint",
+                caption: "Measured OTDR trace from one single-mode fiber endpoint"
+            },
+            {
+                src: "/images/OTDR_Detrend_A1.png",
+                alt: "Exponential fit removed from an OTDR trace, with the residual below",
+                caption: "Exponential fit removed from that trace, and the residual underneath"
             }
         ],
     },
