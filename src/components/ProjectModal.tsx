@@ -3,7 +3,7 @@
  * Gallery images can open in a lightbox (zoom + captions); lightbox slides/index state are lifted to the parent so one lightbox instance can be shared.
  * While mounted, forces dark theme, adds `modal-open` on <body> to hide the site chrome, and cleans up on close.
  */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -30,7 +30,6 @@ export default function ProjectModal({
     setLightboxIndex
 }: ProjectModalProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const autoSlideIntervalRef = useRef<NodeJS.Timeout | null>(null);
     const [maxImageHeight, setMaxImageHeight] = useState(300); // Default max height
 
     // Always enforce dark mode when modal opens and hide main header
@@ -99,39 +98,12 @@ export default function ProjectModal({
     }, [carouselImages]);
 
 
-    // Auto-slide functionality
-    useEffect(() => {
-        if (carouselImages.length <= 2) return;
-
-        autoSlideIntervalRef.current = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-        }, 5000); // Change image every 5 seconds (slightly longer for smoother feel)
-
-        return () => {
-            if (autoSlideIntervalRef.current) {
-                clearInterval(autoSlideIntervalRef.current);
-            }
-        };
-    }, [carouselImages.length]);
-
     const handlePrevious = () => {
         setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-        if (autoSlideIntervalRef.current) {
-            clearInterval(autoSlideIntervalRef.current);
-            autoSlideIntervalRef.current = setInterval(() => {
-                setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-            }, 5000);
-        }
     };
 
     const handleNext = () => {
         setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-        if (autoSlideIntervalRef.current) {
-            clearInterval(autoSlideIntervalRef.current);
-            autoSlideIntervalRef.current = setInterval(() => {
-                setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-            }, 5000);
-        }
     };
 
     const hasMultipleImages = carouselImages.length > 2;
@@ -222,8 +194,36 @@ export default function ProjectModal({
                                     className="text-blue-600 dark:text-blue-400 hover:underline text-lg"
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    {project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                                    {/* Site-relative links (e.g. /vienvo) are shown with the domain */}
+                                    {(project.link.startsWith("/") ? `le-rl.com${project.link}` : project.link)
+                                        .replace(/^https?:\/\//, "")
+                                        .replace(/\/$/, "")}
                                 </a>
+                            </div>
+                        )}
+
+                        {/* Video (if available) - shown above the images as the main media.
+                            Local files (/videos/x.mp4) play in a <video> tag; anything else (e.g. a YouTube embed URL) goes in an iframe. */}
+                        {project.video && (
+                            <div className="w-full max-w-3xl mx-auto aspect-video mb-8">
+                                {/\.(mp4|webm)$/i.test(project.video) ? (
+                                    <video
+                                        src={project.video}
+                                        poster={project.videoPoster}
+                                        className="w-full h-full rounded-md shadow bg-black"
+                                        controls
+                                        playsInline
+                                        preload="metadata"
+                                    />
+                                ) : (
+                                    <iframe
+                                        src={project.video}
+                                        className="w-full h-full rounded-md shadow"
+                                        title="Project video"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                )}
                             </div>
                         )}
 
@@ -406,19 +406,6 @@ export default function ProjectModal({
                                         </div>
                                     )}
                                 </div>
-                            </div>
-                        )}
-
-                        {/* Video (if available) */}
-                        {project.video && (
-                            <div className="w-full aspect-video mb-8">
-                                <iframe
-                                    src={project.video}
-                                    className="w-full h-full rounded-md shadow"
-                                    title="Project video"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
                             </div>
                         )}
 

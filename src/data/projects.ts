@@ -34,7 +34,7 @@ export const projects: Project[] = [
         title: "NSF I-Corps Program - AI-Powered Research Assistant",
         workimage: "/images/NSF-I-CORPS-Logo.png",
         description: "NSF-funded entrepreneurship program focused on translating lab technologies to the market through customer discovery.",
-        status: "Completed. Personally conducted about 80 of 102 customer discovery interviews",
+        status: "Completed — Personally conducted about 80 of 102 customer discovery interviews",
         tags: ["Entrepreneurship"],
         details: "Selected for the NSF I-Corps Puerto Rico 20th cohort to test whether a lab-automation concept (LabOS) solved real problems in academic research environments. Over six weeks, I personally conducted about 80 of the team's 102 interviews with principal investigators and graduate students. The conversations mapped experimental workflows, where experiments fail, and whether lab automation was the right product.\n\n" +
             "Those interviews showed laboratory automation was the wrong premise. The work turned toward diagnosing failed experiments, which became GnoRA.",
@@ -112,7 +112,7 @@ export const projects: Project[] = [
         status: "Classified repeated OTDR traces from known single-mode fiber endpoints",
         tags: ["Research", "AI", "Academic"],
         details: "At the University of Georgia WAVE Lab I worked on fiber authentication from optical time-domain reflectometry. I acquired the traces, built the Python processing path from the raw SOR files through alignment, detrending, and feature extraction, and evaluated KNN, support-vector-machine, and neural-network classifiers.\n\n" +
-            "The final set was 656 measured traces from eight known endpoints on five single-mode fibers. On a later 90/10 split of those measured traces, all three models reached 98.44% accuracy. That result classifies repeated traces from endpoints the models had already seen.",
+            "The final set was 656 measured traces from eight known endpoints on five single-mode fibers. On a later 80/10/10 train/validation/test split of those measured traces, all three models reached 98.44% accuracy: 63 of the 64 held-out traces were classified correctly, and all three models missed the same B2 trace. That result classifies repeated traces from endpoints the models had already seen.",
         techStack: ["Python", "scikit-learn", "NumPy", "pandas"],
         institution: "University of Georgia * WAVE Lab * Advisor: Dr. Mable Fok",
         link: "https://wavelab.engr.uga.edu/",
@@ -121,6 +121,11 @@ export const projects: Project[] = [
             {
                 src: "/images/WaveLab.jpeg",
                 alt: "WaveLab logo"
+            },
+            {
+                src: "/images/OTDR_Confusion_KNN.png",
+                alt: "KNN confusion matrix across the eight fiber endpoints, 98.44% accuracy",
+                caption: "KNN confusion matrix on the held-out test set (98.44%). Each endpoint has 8 measured traces plus 3 noise-augmented copies of each; the only miss is one B2 trace, predicted as C2"
             },
             {
                 src: "/images/OTDR_Trace_A1.png",
@@ -135,16 +140,16 @@ export const projects: Project[] = [
         ],
     },
     {
-        title: "Optical STDP Simulation — Research Exploration ",
+        title: "Optical STDP Simulation — Research Exploration",
         description: "University of Georgia – Undergraduate Researcher",
-        status: "Completed - Built and tested the STDP response simulation circuit",
+        status: "Completed — Built and tested the STDP response simulation circuit",
         tags: ["Research", "Academic"],
         details: "Simulated spike-timing-dependent plasticity (STDP) in photonic hardware using OptiSystem, replicating and extending findings from a WAVE Lab study on semiconductor optical amplifier (SOA)-based learning dynamics. The setup used Mach–Zehnder modulators and a traveling-wave SOA to generate pre- and post-synaptic optical pulses at different frequencies. By adjusting pulse timing, I modeled potentiation and depression behavior analogous to neuronal learning. The simulation produced distinct STDP curves—potentiation and depression windows—demonstrating the timing-dependent gain response of the SOA. This project deepened my understanding of optical neuromorphic computing principles and exposed limitations in parameter sensitivity and response stability of the modeled system.\n\n\n Reference paper: Photonic implementation of a neuronal learning algorithm based on spike timing dependent plasticity \n Reference link: https://ieeexplore.ieee.org/document/7121946",
-        techStack: ["Python", "Machine Learning", "Photonics"],
+        techStack: ["OptiSystem", "Photonic Simulation"],
         role: "",
         link: "https://wavelab.engr.uga.edu/",
         institution: "University of Georgia * Advisor: Dr. Mable Fok (WAVE Lab)",
-        date: "Aug 2024 - Dec 2024",
+        date: "Aug 2024 – Dec 2024",
         images: [
             {
                 src: "/images/WaveLab.jpeg",
@@ -177,10 +182,12 @@ export const projects: Project[] = [
         description: "Cable management startup with hardware prototypes.",
         status: "Completed — Discontinued after contacting 500+ hypothesized clients — low customer urgency validated",
         tags: ["Entrepreneurship", "Hardware", "Software", "3D Design"],
-        details: "Led the design and prototyping of an electronic cable-management system that automated cable retraction through motorized control. Designed the circuit in EasyEDA, modeled the housing in Fusion 360, and built a working prototype using Arduino-based programming. Conducted 500+ user interviews across two entrepreneurship programs to validate market demand and manufacturing feasibility. Ended the project after confirming that the problem did not justify production cost, gaining experience in hardware development, system integration, and user validation.\n\n Concept video: https://youtu.be/Q6_grfdx7ss \n\n Webpage: www.vienvo.com",
+        details: "Led the design and prototyping of an electronic cable-management system that automated cable retraction through motorized control. Designed the circuit in EasyEDA, modeled the housing in Fusion 360, and built a working prototype using Arduino-based programming. Conducted 500+ user interviews across two entrepreneurship programs to validate market demand and manufacturing feasibility. Ended the project after confirming that the problem did not justify production cost, gaining experience in hardware development, system integration, and user validation.",
         techStack: ["Arduino", "3D Printing", "Electronics Prototyping"],
         role: "",
-        link: "https://www.vienvo.com",
+        link: "/vienvo",
+        video: "/videos/Vienvo_Product.mp4",
+        videoPoster: "/videos/Vienvo_Product_Poster.jpg",
         date: "Dec 2022 – Oct 2024",
         images: [
             {
@@ -209,7 +216,7 @@ export const projects: Project[] = [
         role: "Team member — contributed to experimental design and data analysis",
         institution: "University of California, Berkeley * SUPERB Program * Advisors: Dr. Grigory Tikhomirov, Dr. Soyeon Lee",
         link: "https://superb.berkeley.edu/",
-        date: "Jun 2024 - Aug 2024",
+        date: "Jun 2024 – Aug 2024",
         images: [
             {
                 src: "/images/UC_Berkeley_Embleme.jpg",
@@ -231,7 +238,7 @@ export const projects: Project[] = [
         techStack: ["Arduino", "Embedded Systems"],
         institution: "Polytechnic University of Puerto Rico * URP-HOS Project * Advisor: Prof. Wilfredo Torres-Vélez * Lead Researcher: Elvis J. Sánchez Robles",
         link: "https://www.youtube.com/watch?v=FDJzQJS0elk",
-        date: "Aug 2023 - Aug 2024",
+        date: "Aug 2023 – Aug 2024",
         images: [
             {
                 src: "/images/PUPR.jpeg",
@@ -283,7 +290,7 @@ export const projects: Project[] = [
         details: "Developed the payload sensor and data acquisition system for a rocket-based drone payload in the NASA Student Launch Competition. Designed schematics and PCB layouts in EasyEDA and implemented the system using Arduino Nano 33 IoT for sensor control and data logging. The payload captured acceleration, air quality, temperature, pressure, vibration, and GPS data during flight and stored results to an onboard SD card. I also programmed the activation logic to trigger data collection automatically once the payload was released from the rocket. Testing and breadboard validation confirmed successful data acquisition and system response throughout simulated flight conditions.",
         techStack: ["Arduino", "Embedded Systems"],
         role: "Team member — system design and integration",
-        date: "Aug 2023 - May 2024",
+        date: "Aug 2023 – May 2024",
         images: [
             {
                 src: "/images/NASA.png",
@@ -310,7 +317,7 @@ export const projects: Project[] = [
         techStack: ["Lua", "Roblox Studio"],
         role: "Solo developer — handled all coding and asset design",
         link: "https://www.roblox.com/games/5214994542/Knockout#!/game-instances",
-        date: "Mar 2020 - Dec 2020",
+        date: "Mar 2020 – Dec 2020",
         images: [
             {
                 src: "/images/Knockout_Logo.png",

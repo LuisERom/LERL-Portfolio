@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[61489,["/vienvo/_next/static/chunks/abff2d1618d0b3b7.js"],"default"]
+3:I[97367,["/vienvo/_next/static/chunks/ff1a16fafef87110.js","/vienvo/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"Jihn3plQnU6BKMLpwmvUq","rsc":["$","$1","c",{"children":[["$","$L2",null,{"product":{"slug":"vienvo-button-deck","name":"Vienvo Button Deck","image":"/products/buttons.png","images":["/products/buttons.png","/products/buttons-2.png"],"description":"The Vienvo Buttons is a row of controls that lets you manage individual cables when the Vienvo Hub is placed in a hard-to-reach spot. By connecting through Bluetooth, this makes it easy to access your cables without having to move the hub, perfect for keeping your setup neat and hassle-free.","features":["CR2032 coin cell battery included."]}}],[["$","script","script-0",{"src":"/vienvo/_next/static/chunks/abff2d1618d0b3b7.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null
